@@ -1,0 +1,295 @@
+body {
+    margin: 0; 
+    font-family: sans-serif;
+}
+.gameField{
+    width: 120px;
+    height: 120px;
+    border: solid;
+    border-width: 1px;
+    border-color: #eb8126;
+    position: relative;
+    left: 50%;
+    position: relative;
+    display: none;
+}
+.worm{
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    position: absolute;
+}
+.worm.wBody{
+    background: #abc1ab;
+}
+.worm.wHead{
+    background-image: url('../img/worm_head.svg');
+    background-size:contain;
+    background-repeat: no-repeat;
+    transform: rotate(90deg);
+}
+.fruit{
+    position: absolute;
+}
+.fruit0::after{
+    content: "🍏";
+    font-size: 21px;
+}
+.fruit1::after{
+    content: "🍎";
+    font-size: 21px;
+}
+.restart{
+    text-align: center;
+    border: solid;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-width: 2px;
+    color: cornflowerblue;
+    border-radius: 16px;
+    margin-top: 0px;
+    font-weight: bolder;
+    width: 126px;
+    position: relative;
+    left: 50%;
+    /* top: 45px; */
+    background-color: white;
+    cursor: pointer;
+    box-shadow: 0 5px #999;
+    transform: translate(-75px, 0px);
+}
+.restart:active {
+  background-color: #eaeae9;
+  box-shadow: 0 2px #666;
+  transform: translate(-75px, 4px);
+}
+.restart:hover{
+    color: #9f00ff;
+}
+.endingPopUp .endDesc {
+    padding: 10px;
+    font-size: 22px;
+}
+.endingPopUp .configDesc {
+    padding: 10px;
+    font-size: 22px;
+}
+.endingPopUp .gameConfig{
+    position: absolute;
+    right: 0px;
+    font-size: 32px;
+    cursor: pointer;
+
+}
+.endingPopUp .gameConfig:hover{
+    animation:spin 2s linear infinite;
+    transform-origin: 50% 55%;
+}
+@keyframes spin {
+    25% { transform:rotate(90deg); } 
+    75% { transform:rotate(270deg); }
+    100% { transform:rotate(360deg); } 
+}
+.gameEnd{
+    font-size: 60px;
+    text-align: center;
+    color: #d61d1d;
+}
+.endingPopUp{
+    user-select: none;
+    border: solid;
+    border-radius: 16px;
+    /* height: 200px; */
+    width: 450px;
+    position: absolute;
+    background-color: #f7d8aa;
+    border-color: #f5ce93;
+    left: 50%;
+    display: none;
+}
+
+.fullPopUpBg {
+	background: linear-gradient(-45deg, #ec7846, #cc317c, #23a5d5, #23d6ab);
+	background-size: 350% 350%;
+	animation: gradient 17s ease infinite;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+}
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+
+.infoPopUp{
+    user-select: none;
+    border: solid;
+    border-radius: 16px;
+    /* height: 400px; */
+    width: 500px;
+    position: absolute;
+    background-color: rgba(187, 185, 185, 0.274);
+    border-color: white;
+    left: 50%;
+    color: white;
+}
+.infoPopUp .descriptSec{
+    font-size: 25px;
+    padding: 12px;
+}
+.infoPopUp .controlSec {
+    border-top: solid white;
+    border-bottom: solid white;
+    font-size: 25px;
+    padding: 12px;
+}
+.infoPopUp .controlSec .secTitle {
+    /* padding-top: 5px; */
+    font-weight: bold;
+}
+.infoPopUp .foot {
+    font-size: 30px;
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+}
+.scoreBoard{
+    background: #a8fba8;
+    font-size: 40px;
+    left: 50%;
+    position: relative;
+    display: none;
+}
+.scoreBoard .clockInfin, .scoreBoard .marksInfin {
+    display: none;
+}
+.scoreBoard.infinMode .normal{
+    display: none;
+}
+.scoreBoard.infinMode .levelBoard{
+    display: none;
+}
+.scoreBoard.infinMode .clockInfin, .scoreBoard.infinMode .marksInfin {
+    display: block;
+}
+.scoreBoard.infinMode .clockInfin span {
+    font-size: 33px;
+}
+[data-for="scorePoint"] {
+    font-weight: bold;
+    color: #ea6262;
+}
+.levelBoard{
+    diplay: inline-block;
+    float: right;
+}
+#levelNum{
+    font-weight: bold;
+    color: #6973f9;
+    padding-right: 5px;
+}
+#timeRemain{
+    font-weight: bold;
+    color: #e469da;
+}
+.cave{
+    position: relative;
+    color: #4c2c2c;
+    opacity: 0.6;
+    top: 471px;
+    border: solid 3.02px;
+    height: 27px;
+    width: 24px;
+    display: none;
+    border-bottom: 0px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.cbLine{
+    display: inline-block;
+    float: right;
+    border: solid 1px black;
+    height: 35px;
+    width: 200px;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+.cbLine span{
+    background: #62c4ff;
+    display: block;
+    height: 35px;
+    width: 0px;
+}
+.trans_fullPopUpBg {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(226, 224, 224, 0.274);
+    display: none;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+.configPopUp {
+    display: none;
+    position: absolute;
+    width: 300px;
+    background: #f9f9f9;
+    border-radius: 5px;
+    padding: 10px;
+    user-select: none;
+    left: 50%;
+    top: 50%;
+    border: solid 2px #c3c3d7
+}
+.configPopUp .title {
+    font-size: 30px;
+    color: sienna;
+}
+.configPopUp .configOpts {
+    padding: 20px 5px;
+}
+.configPopUp .configOpts tr {
+    height: 33px;
+    font-size: 20px;
+}
+.configPopUp .configOpts tr select {
+    font-size: 18px;
+    border: solid 1px;
+}
+.configPopUp .configOpts td:nth-child(2) {
+    padding-left: 5px;
+}
+.configPopUp .close {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    font-size: 25px;
+    cursor: pointer;
+    padding: 10px;
+}
+.chick{
+    width: 20.6px;
+    height: 16px;
+    animation:swing 0.8s linear infinite;
+}
+.chick::after{
+    content: "🐥";
+    font-size: 15px;			
+}
+@keyframes swing {
+    25% { transform:rotate(-20deg); } 
+    75% { transform:rotate(20deg); }
+    100% { transform:rotate(0deg); } 
+}
