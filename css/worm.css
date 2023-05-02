@@ -1,3 +1,6 @@
+:root {
+    --widthA: 540px;
+}
 body {
     margin: 0; 
     font-family: sans-serif;
@@ -9,8 +12,7 @@ body {
     border-width: 1px;
     border-color: #eb8126;
     position: relative;
-    left: 50%;
-    position: relative;
+    left: calc(50% - var(--widthA)/2);
     display: none;
 }
 .worm{
@@ -105,7 +107,7 @@ body {
     position: absolute;
     background-color: #f7d8aa;
     border-color: #f5ce93;
-    left: 50%;
+    left: calc(50% - 225px);
     display: none;
 }
 
@@ -136,13 +138,13 @@ body {
     user-select: none;
     border: solid;
     border-radius: 16px;
-    /* height: 400px; */
     width: 500px;
     position: absolute;
     background-color: rgba(187, 185, 185, 0.274);
     border-color: white;
     left: 50%;
     color: white;
+    transform: translateX(-250px)
 }
 .infoPopUp .descriptSec{
     font-size: 25px;
@@ -168,7 +170,7 @@ body {
 .scoreBoard{
     background: #a8fba8;
     font-size: 40px;
-    left: 50%;
+    left: calc(50% - var(--widthA)/2);
     position: relative;
     display: none;
 }
@@ -249,9 +251,9 @@ body {
     border-radius: 5px;
     padding: 10px;
     user-select: none;
-    left: 50%;
-    top: 50%;
-    border: solid 2px #c3c3d7
+    left: calc(50% - 162px);/*total width 324*/
+    top: calc(50% - 110px);
+    border: solid 2px #c3c3d7;
 }
 .configPopUp .title {
     font-size: 30px;
@@ -279,6 +281,18 @@ body {
     cursor: pointer;
     padding: 10px;
 }
+.pauseBtn {
+    position: absolute;
+    right: 0px;
+    padding: 5px;
+}
+.pauseBtn.play::after{
+    content: "▶️";
+}
+.pauseBtn.stop::after{
+    content: "⏸️";
+}
+
 .chick{
     width: 20.6px;
     height: 16px;

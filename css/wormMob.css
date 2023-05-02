@@ -1,0 +1,11 @@
+@media screen and (max-width: 600px) {
+    .gameField, .scoreBoard{
+        left: 0vw;
+    }
+}
+
+@media screen and (min-height: 800px){
+    .configPopUp{
+        top: 50vw;
+    }
+}
