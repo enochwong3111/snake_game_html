@@ -1,13 +1,20 @@
 <!doctype html>
 <html>
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script src = "../game_control_js/src/gameControl.js"></script>
 	<script src = "./src/worm.js"></script>
 	<link rel="stylesheet" href="./css/worm.css">
+	<link rel="stylesheet" href="./css/wormMob.css">
+	<link rel="stylesheet" href="./css/gameControlMob.css">
+	<link rel="stylesheet" href="../game_control_js/css/gameControlMob.css">
 	<title>Greedy Worm</title>
 <head>
-<body>	
+<body>
+	
 	<div class = "scoreBoard infinMode">
+		<div class="pauseBtn stop"></div>
 		<div class = "clock normal">Time Remains: <span id = "timeRemain">0</span>s</div>
 		<div class = "clockInfin">Time Remains: <span>♾️</span></div>
 		<div class = "marks normal">Scores: (<span data-for="scorePoint">0</span> / <span id="maxPoint">0</span>)</div>

@@ -69,11 +69,6 @@ gameSetting.initGame = function() {
 	});
 	$('.infoPopUp').css({
 		top: (gameSetting.fieldHeight/2 - 100) + 'px',
-		'transform': 'translateX(-' + (500/2) + 'px)'
-	});
-	var transform_y = $('.configPopUp').height() / 2;
-	$('.configPopUp').css({
-		'transform': 'translate(-' + (300/2) + 'px, -' + transform_y + 'px)'
 	});
 	$('#gameSpeed').val(gameSetting.speed);
 	$('#hasBound').val(gameSetting.boundary?1:0);
@@ -145,17 +140,14 @@ gameSetting.startGame = function(){
 		gameSetting.gameField.css({
 			width: gameSetting.fieldWidth + 'px', 
 			height: gameSetting.fieldHeight + 'px',
-			'transform': 'translateX(-' + gameSetting.fieldWidth/2 + 'px)'
 		});
 		$('.scoreBoard').css({
 			'width': gameSetting.fieldWidth + 2,
-			'transform': 'translateX(-' + (gameSetting.fieldWidth/2) + 'px)'
 		});
 		$('.cave').css('top', gameSetting.fieldHeight - 20);
 	}
 	$('.endingPopUp').css({
 		top: (gameSetting.fieldHeight + 200)/2 + 'px',
-		transform: 'translateX(-' + (450/2) + 'px)',
 		display: 'none'
 	});
 	gameSetting.genFood();
@@ -465,97 +457,119 @@ gameSetting.dectectBodyTouch = function() {
 }
 
 gameSetting.bindEvents = function() {
+	function moveUp() {
+		if(gameSetting.dir > -1){
+			if(gameSetting.dir == 2 || gameSetting.dir == 3){
+				//do nothing
+				gameSetting.keyAccept = true;
+			}else{
+				gameSetting.dir = 2;
+				$('#wb0').css("transform","rotate(0deg)");
+			}
+		}else{
+			//start after pause
+			if(gameSetting.default_dir != 3){
+				gameSetting.dir = 2;
+				$('#wb0').css("transform","rotate(0deg)");
+			}else{
+				gameSetting.dir = gameSetting.default_dir;
+			}
+		}
+		$('.pauseBtn').removeClass('play').addClass('stop');
+	}
+
+	function moveDown() {
+		if(gameSetting.dir > -1){
+			if(gameSetting.dir == 2 || gameSetting.dir == 3){
+				//do nothing
+				gameSetting.keyAccept = true;
+			}else{
+				gameSetting.dir = 3;
+				$('#wb0').css("transform","rotate(180deg)");
+			}
+		}else{
+			//start after pause
+			if(gameSetting.default_dir != 2){
+				gameSetting.dir = 3;
+				$('#wb0').css("transform","rotate(180deg)");
+			}else{
+				gameSetting.dir = gameSetting.default_dir;
+			}
+		}
+		$('.pauseBtn').removeClass('play').addClass('stop');
+	}
+
+	function moveLeft() {
+		if(gameSetting.dir > -1){
+			if(gameSetting.dir == 0 || gameSetting.dir == 1){
+				//do nothing
+				gameSetting.keyAccept = true;
+			}else{
+				gameSetting.dir = 1;
+				$('#wb0').css("transform","rotate(-90deg)");
+			}
+		}else{
+			//start after pause
+			if(gameSetting.default_dir != 0){
+				gameSetting.dir = 1;
+				$('#wb0').css("transform","rotate(-90deg)");
+			}else{
+				gameSetting.dir = gameSetting.default_dir;
+			}
+		}
+		$('.pauseBtn').removeClass('play').addClass('stop');
+	}
+	
+	function moveRight() {
+		if(gameSetting.dir > -1){
+			if(gameSetting.dir == 0 || gameSetting.dir == 1){
+				//do nothing
+				gameSetting.keyAccept = true;
+			}else{
+				gameSetting.dir = 0;
+				$('#wb0').css("transform","rotate(90deg)");
+			}
+		}else{
+			//start after pause
+			if(gameSetting.default_dir != 1){
+				gameSetting.dir = 0;
+			}else{
+				gameSetting.dir = gameSetting.default_dir;
+				$('#wb0').css("transform","rotate(90deg)");
+			}
+		}
+		$('.pauseBtn').removeClass('play').addClass('stop');
+	}
+
 	$(document).unbind('keydown').keydown(function(evt){
 		//console.log(evt.keyCode);
 		if(gameSetting.keyAccept){
 			gameSetting.keyAccept = false;
 			if(evt.keyCode == 37){
-			//left arrow
-				if(gameSetting.dir > -1){
-					if(gameSetting.dir == 0 || gameSetting.dir == 1){
-						//do nothing
-						gameSetting.keyAccept = true;
-					}else{
-						gameSetting.dir = 1;
-						$('#wb0').css("transform","rotate(-90deg)");
-					}
-				}else{
-					//start after pause
-					if(gameSetting.default_dir != 0){
-						gameSetting.dir = 1;
-						$('#wb0').css("transform","rotate(-90deg)");
-					}else{
-						gameSetting.dir = gameSetting.default_dir;
-					}
-				}
+				//left arrow
+				moveLeft();
 			}
 			else if(evt.keyCode == 38){
 				//up arrow
-				if(gameSetting.dir > -1){
-					if(gameSetting.dir == 2 || gameSetting.dir == 3){
-						//do nothing
-						gameSetting.keyAccept = true;
-					}else{
-						gameSetting.dir = 2;
-						$('#wb0').css("transform","rotate(0deg)");
-					}
-				}else{
-					//start after pause
-					if(gameSetting.default_dir != 3){
-						gameSetting.dir = 2;
-						$('#wb0').css("transform","rotate(0deg)");
-					}else{
-						gameSetting.dir = gameSetting.default_dir;
-					}
-				}
+				moveUp();
 			}
 			else if(evt.keyCode == 39){
 				//right arrow
-				if(gameSetting.dir > -1){
-					if(gameSetting.dir == 0 || gameSetting.dir == 1){
-						//do nothing
-						gameSetting.keyAccept = true;
-					}else{
-						gameSetting.dir = 0;
-						$('#wb0').css("transform","rotate(90deg)");
-					}
-				}else{
-					//start after pause
-					if(gameSetting.default_dir != 1){
-						gameSetting.dir = 0;
-					}else{
-						gameSetting.dir = gameSetting.default_dir;
-						$('#wb0').css("transform","rotate(90deg)");
-					}
-				}
+				moveRight();
 			}
 			else if(evt.keyCode == 40){
 				//down arrow
-				if(gameSetting.dir > -1){
-					if(gameSetting.dir == 2 || gameSetting.dir == 3){
-						//do nothing
-						gameSetting.keyAccept = true;
-					}else{
-						gameSetting.dir = 3;
-						$('#wb0').css("transform","rotate(180deg)");
-					}
-				}else{
-					//start after pause
-					if(gameSetting.default_dir != 2){
-						gameSetting.dir = 3;
-						$('#wb0').css("transform","rotate(180deg)");
-					}else{
-						gameSetting.dir = gameSetting.default_dir;
-					}
-				}
+				moveDown();
 			}
 			else if(evt.keyCode == 32){
 				//Pause (Space)
 				if(gameSetting.dir > -1){
 					gameSetting.default_dir = gameSetting.dir;
 					gameSetting.dir = -1;
+					$('.pauseBtn').removeClass('stop').addClass('play');
 				}else{
 					gameSetting.dir = gameSetting.default_dir;
+					$('.pauseBtn').removeClass('play').addClass('stop');
 				}
 			}
 			// else if(evt.keyCode == 88){
@@ -582,6 +596,47 @@ gameSetting.bindEvents = function() {
 	$('.infoPopUp .foot').click(function(e){
 		e.stopPropagation();
 		gameSetting.startGame();
+		
+		//init the game control panel
+		var setting = {
+			type: GameControl.DirectionBtnType.Grid,
+			position: GameControl.Position.BottomRight,
+			mobileOnly: true
+		};
+		GameControl.init(setting);
+		
+		GameControl.bindKeyPressEvent(GameControl.Keys.Up, function(e){
+			e.stopPropagation();
+			e.preventDefault();
+			if(gameSetting.keyAccept){
+				gameSetting.keyAccept = false;
+				moveUp();
+			}
+		});
+		GameControl.bindKeyPressEvent(GameControl.Keys.Down, function(e){
+			e.stopPropagation();
+			e.preventDefault();
+			if(gameSetting.keyAccept){
+				gameSetting.keyAccept = false;
+				moveDown();
+			}
+		});
+		GameControl.bindKeyPressEvent(GameControl.Keys.Left, function(e){
+			e.stopPropagation();
+			e.preventDefault();
+			if(gameSetting.keyAccept){
+				gameSetting.keyAccept = false;
+				moveLeft();
+			}
+		});
+		GameControl.bindKeyPressEvent(GameControl.Keys.Right, function(e){
+			e.stopPropagation();
+			e.preventDefault();
+			if(gameSetting.keyAccept){
+				gameSetting.keyAccept = false;
+				moveRight();
+			}
+		});
 	});
 
 	$('.endingPopUp .gameConfig').click(function(e){
@@ -608,7 +663,23 @@ gameSetting.bindEvents = function() {
 		gameSetting.infinMode = (this.value === '1');
 	});
 	
-	$('.restart').click(function(){
+	$('.restart').click(function(e){
+		e.stopPropagation();
 		gameSetting.startGame();
+	});
+
+	$('.pauseBtn').click(function(e){
+		e.stopPropagation();
+		if (gameSetting.gameEnd) {
+			return;
+		}
+		if(gameSetting.dir > -1){
+			gameSetting.default_dir = gameSetting.dir;
+			gameSetting.dir = -1;
+			$(this).removeClass('stop').addClass('play');
+		}else{
+			gameSetting.dir = gameSetting.default_dir;
+			$(this).removeClass('play').addClass('stop');
+		}
 	});
 }
