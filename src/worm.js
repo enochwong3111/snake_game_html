@@ -63,15 +63,18 @@ var levels = {
 
 gameSetting.initGame = function() {
 	//remove the remaining bodies
-	$('body').css({
-		'min-height': gameSetting.fieldHeight + 20,
-		'min-width': gameSetting.fieldWidth + 10,
-	});
-	$('.infoPopUp').css({
-		top: (gameSetting.fieldHeight/2 - 100) + 'px',
-	});
+	// $('body').css({
+	// 	'min-height': gameSetting.fieldHeight + 20,
+	// 	'min-width': gameSetting.fieldWidth + 10,
+	// });
 	$('#gameSpeed').val(gameSetting.speed);
 	$('#hasBound').val(gameSetting.boundary?1:0);
+	var usingMobile = navigator.userAgent.match(/(Android|webOS|iPhone|iPad|iPod|BlackBerry|Windows Phone)/i);
+	if (usingMobile) {
+		$('[data-for="deviceNote"]').show();
+	} else {
+		$('[data-for="deviceNote"]').hide();
+	}
 	gameSetting.bindEvents();
 }
 

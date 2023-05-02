@@ -144,7 +144,8 @@ body {
     border-color: white;
     left: 50%;
     color: white;
-    transform: translateX(-250px)
+    top: 50%;
+    transform: translate(-250px, -50%);
 }
 .infoPopUp .descriptSec{
     font-size: 25px;
