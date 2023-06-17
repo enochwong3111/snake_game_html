@@ -11,8 +11,3 @@
     }
 }
 
-@media screen and (min-height: 800px){
-    .configPopUp{
-        top: 50vw;
-    }
-}

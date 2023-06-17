@@ -252,9 +252,10 @@ body {
     border-radius: 5px;
     padding: 10px;
     user-select: none;
-    left: calc(50% - 162px);/*total width 324*/
-    top: calc(50% - 110px);
     border: solid 2px #c3c3d7;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 .configPopUp .title {
     font-size: 30px;
